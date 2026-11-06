@@ -3,18 +3,34 @@ import time
 from time import sleep
 import os
 import platform
+import sys
 def cc(): # Console clearing function
     oss = platform.system()
     if oss=="Windows":
         os.system("cls")
     elif oss=="Darwin" or oss=="Linux":
         os.system("clear")
-
-n = int(input("How many floors do you want in your building? ")) # Floor number input
+SIGINT=False
+n=0
+def retn(): # Input type checker
+    try:
+        n = input("How many floors do you want in your building? ") # Floor number input
+        if(n=="q"):
+            cc()
+            print("Thank you for using the lift program, see you later!")
+            time.sleep(3)
+            n=0
+            sys.exit()
+        n=int(n)
+    except ValueError:
+        print("Input must be a floor number, or 'q' to quit the program")
+        time.sleep(3)
+        retn()
+retn()
 cc()
 cs = [0] # Floor targets. 0 is just a placeholder.
 di = "IDLE" # Direction lift is heading
-cf = 1
+cf = 1 # Current floor
 cs.pop() # Remove 0 from the array
 running = True
 while (running==True):
@@ -34,6 +50,15 @@ while (running==True):
     # else, input is discarded, and user will have to input again when the direction is
     # aligned, or the lift is IDLE
     # In addition, of course, 0 < nf <= n, and nf is not already in cs
+    
+    if(nf!="q"): # Making sure the input type is valid
+        try:
+            nf=int(nf)
+        except ValueError:
+            print("Input must be a floor number, or 'q' to quit the program")
+            time.sleep(3)
+            nf=""
+
     if(nf=="q"):
         cc()
         print("Thank you for using the lift program, see you later!")
