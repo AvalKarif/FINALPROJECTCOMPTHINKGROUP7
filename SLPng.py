@@ -10,8 +10,8 @@ def cc(): # Console clearing function
         os.system("cls")
     elif oss=="Darwin" or oss=="Linux":
         os.system("clear")
-SIGINT=False
-n=0
+
+n=0 # Floor numbers
 def retn(): # Input type checker
     try:
         n = input("How many floors do you want in your building? ") # Floor number input
@@ -84,7 +84,7 @@ while (running==True):
     elif(di=="DESCENDING"):
         cf-=1
     else:
-        cf=cf # This isn't actually needed, I just feel like adding it.
+        cf=cf # Just to prevent any errors
     
     # Floor number remover
     if cf in cs:
