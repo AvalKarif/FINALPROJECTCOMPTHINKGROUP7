@@ -10,11 +10,58 @@ def cc(): # Console clearing function
         os.system("cls")
     elif oss=="Darwin" or oss=="Linux":
         os.system("clear")
-
-n=0 # Floor numbers
+AC="""
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣟⠛⣿⣿⡿⢿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠿⠿⠿⠾⠿⠿⠶⠾⠿⠿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣶⣶⡆⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣅⣀⡇⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠛⠛⠃⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠁⠈⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀
+"""
+AO="""
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠠⣤⠀⠀⢀⡀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀⣀⣁⣀⣀⣉⣁⣀⣀⣀⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣶⣶⣶⣶⣾⣷⣶⣶⣶⣶⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿
+"""
+DO="""
+ :::====  :::====  :::====  :::====       :::====  :::====  :::===== :::= === :::===== :::==== 
+ :::  === :::  === :::  === :::  ===      :::  === :::  === :::      :::===== :::      :::  ===
+ ===  === ===  === ===  === =======       ===  === =======  ======   ======== ======   ===  ===
+ ===  === ===  === ===  === === ===       ===  === ===      ===      === ==== ===      ===  ===
+ =======   ======   ======  ===  ===       ======  ===      ======== ===  === ======== =======                                                                                             
+"""
+DC="""
+ :::====  :::====  :::====  :::====       :::===== :::      :::====  :::===  :::===== :::==== 
+ :::  === :::  === :::  === :::  ===      :::      :::      :::  === :::     :::      :::  ===
+ ===  === ===  === ===  === =======       ===      ===      ===  ===  =====  ======   ===  ===
+ ===  === ===  === ===  === === ===       ===      ===      ===  ===     === ===      ===  ===
+ =======   ======   ======  ===  ===       ======= ========  ======  ======  ======== =======                                                                                            
+"""
+n=0
 def retn(): # Input type checker
+    global n
+    n = input("How many floors do you want in your building? ") # Floor number input
     try:
-        n = input("How many floors do you want in your building? ") # Floor number input
         if(n=="q"):
             cc()
             print("Thank you for using the lift program, see you later!")
@@ -25,16 +72,26 @@ def retn(): # Input type checker
     except ValueError:
         print("Input must be a floor number, or 'q' to quit the program")
         time.sleep(3)
+        cc()
         retn()
+    else:
+        n=int(n)
 retn()
 cc()
+print(n)
 cs = [0] # Floor targets. 0 is just a placeholder.
 di = "IDLE" # Direction lift is heading
 cf = 1 # Current floor
 cs.pop() # Remove 0 from the array
 running = True
+ds="CLOSED"
 while (running==True):
     cc()
+    if(ds=="OPEN"):
+        print(DO)
+        print(AO)
+    else:
+        print(AC)
     print(f"There are {n} floors in this building")
     print(f"Current floor: {cf}")
     print(f"Direction: {di}")
@@ -51,7 +108,9 @@ while (running==True):
     # aligned, or the lift is IDLE
     # In addition, of course, 0 < nf <= n, and nf is not already in cs
     
-    if(nf!="q"): # Making sure the input type is valid
+    if(nf==""):
+        time.sleep(0.0001)
+    elif(nf!="q"): # Making sure the input type is valid
         try:
             nf=int(nf)
         except ValueError:
@@ -78,17 +137,24 @@ while (running==True):
         print("The floor number you entered is not on the direction the lift is heading. Please enter again when the lift direction has reversed/when the lift is idle")
         time.sleep(5)
     
+    if(ds=="OPEN"):
+        print(DC)
+        print(AC)
+        ds="CLOSED"
+        time.sleep(3)
+
     # Movement
     if(di=="ASCENDING"):
         cf+=1
     elif(di=="DESCENDING"):
         cf-=1
     else:
-        cf=cf # Just to prevent any errors
+        cf=cf # Preventing any error.
     
     # Floor number remover
     if cf in cs:
         cs.remove(cf)
+        ds="OPEN"
 
     # Floor status manager
     if not cs:
